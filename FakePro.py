@@ -23,5 +23,5 @@ t4 = "Anita sends bob 2 bitcoin"
 bc = BC("Initial string", [t1,t2])
 bc.displayBlock()
 print("--------------------")
-bc2 = BC("Second Transaction", [t3,t4])
+bc2 = BC(bc.block_hash, [t3,t4])
 bc2.displayBlock()
