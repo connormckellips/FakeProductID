@@ -16,7 +16,7 @@ class BC:
 
 
 t1 = "Bob sends 5 bitcoin to John"
-t2 = "John sends 1 bitcoin to Wonton"
+t2 = "Wonton sends 1 bitcoin to John"
 t3 = "Wonton sends anita 3 Bitcoin"
 t4 = "Anita sends bob 2 bitcoin"
 
