@@ -12,7 +12,7 @@ class BC:
 
     def displayBlock(self):
         print(self.block_data)
-        print("Signature :",self.block_hash)
+        print(self.block_hash)
 
 
 t1 = "Bob sends 5 bitcoin to John"
