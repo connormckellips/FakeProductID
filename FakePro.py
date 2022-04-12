@@ -31,12 +31,12 @@ class BC:
 
 
 print("\nPackets look like --> ['Company' : 'Item' : 'Owner' | Old Hash | New Block Hash]\n")
-bc = BC("Initial string", "Walmart", "VideoGame", "Walmart")
-bc.displayBlock()
+bc = BC("No Hash Made Yet", "Walmart", "VideoGame", "Walmart")
 bc.predictHash()
+bc.displayBlock()
 bc.compare()
 print("---------------------------------------------------------------------------------------------------")
 bc2 = BC(bc.block_hash, "Walmart", "VideoGame", "Bob")
-bc2.displayBlock()
 bc2.predictHash()
+bc2.displayBlock()
 bc2.compare()
