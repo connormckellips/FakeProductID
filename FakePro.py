@@ -1,33 +1,40 @@
 import hashlib
 
 class BC:
-    def __init__(self, previousHash, transactionList):
+    def __init__(self, previousHash, company, item, owner):
+        # previous hash is a reference to the previous block
         self.previousHash = previousHash
-        self.transactionList = transactionList
+        self.company = company
+        self.item = item
+        self.owner = owner
 
         #Creates the data to placed into each block
-        self.block_data = "-".join(transactionList) + "-" + previousHash
+        self.block_data = "".join(company) + " : " + "".join(item) + " : " + "".join(owner) + " | " + previousHash
         #Hashes with Sha256 hashing algorinthm
         self.block_hash = hashlib.sha256(self.block_data.encode()).hexdigest()
 
     def displayBlock(self):
-        print(self.block_data)
-        print(self.block_hash)
+        print("[", self.block_data, "|", "New Block Hash :", self.block_hash, "]")
 
+    def predictHash(self):
+        # Creates the data to placed into each block
+        self.block_data = "".join(self.company) + " : " + "".join(self.item) + " : " + "".join(self.owner) + " | " + self.previousHash
+        # Hashes with Sha256 hashing algorinthm
+        self.pre_Hash = hashlib.sha256(self.block_data.encode()).hexdigest()
+        print("Predicted Block Hash :", self.block_hash)
 
-t1 = "Bob sends 5 bitcoin to John"
-t2 = "Wonton sends 1 bitcoin to John"
-t3 = "Wonton sends 3 bitcoin to Anita"
-t4 = "Anita sends 2 Bitcoin to Bob"
-t5 = "Wonton send 190 bitcoin to Hacker"
-t6 = "Hacker sends 200 bitcoin to Bossman"
+    def compare(self):
+        if self.pre_Hash == self.block_hash:
+            print( "Hashes look right, this is a real token" )
+        else:
+            print( "Fake token detected" )
 
-
-bc = BC("Initial string", [t1,t2])
+bc = BC("Initial string", "Walmart", "VideoGame", "Walmart")
 bc.displayBlock()
-print("--------------------")
-bc2 = BC(bc.block_hash, [t3,t4])
+bc.predictHash()
+bc.compare()
+print("---------------------------------------------------------------------------------------------------")
+bc2 = BC(bc.block_hash, "Walmart", "VideoGame", "Bob")
 bc2.displayBlock()
-print("--------------------")
-bc3 = BC(bc2.block_hash, [t5,t6])
-bc3.displayBlock()
+bc2.predictHash()
+bc2.compare()
