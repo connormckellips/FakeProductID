@@ -29,6 +29,8 @@ class BC:
         else:
             print( "Fake token detected" )
 
+
+print("\nPackets look like --> ['Company' : 'Item' : 'Owner' | Old Hash | New Block Hash]\n")
 bc = BC("Initial string", "Walmart", "VideoGame", "Walmart")
 bc.displayBlock()
 bc.predictHash()
