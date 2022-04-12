@@ -40,3 +40,4 @@ bc2 = BC(bc.block_hash, "Walmart", "VideoGame", "Bob")
 bc2.predictHash()
 bc2.displayBlock()
 bc2.compare()
+
