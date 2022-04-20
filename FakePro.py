@@ -29,22 +29,16 @@ class BC:
         else:
             print( "Fake token detected" )
 
-    def addProduct(self, previousHash):
-        bc = BC(previousHash, "Walmart", "VideoGame", "Walmart")
-        bc.predictHash()
-        bc.displayBlock()
-        bc.compare()
+    def addProduct(self):
+        self.predictHash()
+        self.displayBlock()
+        self.compare()
 
 
 print("\nPackets look like --> ['Company' : 'Item' : 'Owner' | Old Hash | New Block Hash]\n")
 bc = BC("No Hash Made Yet", "Walmart", "VideoGame", "Walmart")
-bc.predictHash()
-bc.displayBlock()
-bc.compare()
+bc.addProduct()
 print("---------------------------------------------------------------------------------------------------")
 bc2 = BC(bc.block_hash, "Walmart", "VideoGame", "Bob")
-bc2.addProduct(bc.block_hash)
-#bc2.predictHash()
-#bc2.displayBlock()
-#bc2.compare()
+bc2.addProduct()
 
