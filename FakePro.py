@@ -42,10 +42,12 @@ print("\nPackets look like --> ['Company' : 'Item' : 'Owner' | Old Hash | New Bl
 # creates the initial product and adds it into the blockchain, checks if it is fake
 bc = BC("No Hash Made Yet", "Walmart", "VideoGame", "Walmart")
 bc.displayProduct()
+
 print("---------------------------------------------------------------------------------------------------")
 # creates a second block and adds it into the blockchain, checks if it is fake
 bc2 = BC(bc.block_hash, "Walmart", "VideoGame", "Bob")
 bc2.displayProduct()
+
 print("---------------------------------------------------------------------------------------------------")
 fakeItem = BC(bc.block_hash, "Walmart", "VideoGame", "Hacker")
 fakeItem.displayProduct()
