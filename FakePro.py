@@ -55,5 +55,3 @@ fakeItem = BC(bc.block_hash, "Walmart", "VideoGame", "Hacker")
 fakeItem.displayProduct()
 
 fakeItem.compare(realItem)
-
-
