@@ -145,4 +145,3 @@ if check_option(option):
             print("Your hash, is the accepted Hash!")
         else:
             print("Error your hash, was not the right hash.")
-
