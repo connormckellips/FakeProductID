@@ -2,10 +2,10 @@
 #   Connor McKellips
 #   Nick Raffel
 #
-#   Applied Cryptography - MSCS 380
-#   This is a Coding assignment that demonstrates in a basic sense how block chain works
-#   it contains the entire block data of the item, company, store, owner, etc
-#   and creates a key hash based on that info
+#   Applied Cryptography - MSCS 396
+#   This is a Coding assignment that demonstrates basic blockchain technology
+#   A product block contains data of the item, company, store, and owner
+#   It also creates a key hash based on that information
 #
 ############
 
@@ -23,20 +23,20 @@ class BC:
 
         # Creates the data to placed into each block
         self.block_data = "".join(company) + " : " + "".join(item) + " : " + "".join(owner) + " | " + previousHash
-        # Hashes with Sha256 hashing algorinthm
+        # Hashes with Sha256 hashing algorithm
         self.block_hash = hashlib.sha256(self.block_data.encode()).hexdigest()
 
     # creates a predicted hash for product block
     def predictHash(self, company, item, owner, hash):
         # Creates the data to placed into each block
         block_data = "".join(company) + " : " + "".join(item) + " : " + "".join(owner) + " | " + hash
-        # Hashes with Sha256 hashing algorinthm
+        # Hashes with Sha256 hashing algorithm
         pre_Hash = hashlib.sha256(block_data.encode()).hexdigest()
         return pre_Hash
 
     # compares the hashes with each other
     def compare(self, item):
-        # pre_hash item we are creating
+        # if the block's hash is a verified item, it prints true
         if self.pre_Hash == item.block_hash:
             print( "Hashes look right, this is a real token" )
         else:
@@ -50,6 +50,7 @@ class BC:
 
 # simple function for input validation
 def check_option(answer):
+    # if the input is not valid, it prints false
     if not option.isdigit() or int(option) <= 0 or int(option) > 3:
         print("not an option")
         return False
@@ -57,7 +58,7 @@ def check_option(answer):
         return True
 
 
-# 61 - 63 Creates the Initial token
+# Creates the Initial token
 VideoGame = BC("Initialized", "CryptoMart", "VideoGame", "CryptoMart")
 Book = BC("Initialized", "CryptoMart", "Book", "CryptoMart")
 Monkey_NFT = BC("Initialized", "CryptoMart", "Monkey NFT", "CryptoMart")
@@ -77,7 +78,7 @@ while not check_option(option):
 
 # if check option is accepted
 if check_option(option):
-    # option 1 check
+    # option 1 (video game) check
     if option == "1":
         print("Oh, a ", VideoGame.item, "!\nHere's the Block with the Hashes!")
         # creates the new book that you bought and dispays the packet
@@ -100,7 +101,7 @@ if check_option(option):
         else:
             print("Error, your hash was not the right hash.")
 
-    # option 2 check
+    # option 2 (book) check
     if option == "2":
         print("Oh, a ", Book.item, "!\nHere's the Block with the Hashes!")
         # creates the new book that you bought and dispays the packet
@@ -123,7 +124,7 @@ if check_option(option):
         else:
             print("Error your hash, was not the right hash.")
 
-    # option 3 check
+    # option 3 (monkey NFT) check
     if option == "3":
         print("Oh, a ", Monkey_NFT.item, "!\nHere's the Block with the Hashes!")
         # creates the new book that you bought and dispays the packet
@@ -131,7 +132,7 @@ if check_option(option):
         new_monkey_nft.displayProduct()
 
         # fake NFT that the "hacker" tried to steal while you bought it
-        fake_nft = BC(Book.block_hash, "CryptoMart", "Monkey NFT", "Hacker")
+        fake_nft = BC(Monkey_NFT.block_hash, "CryptoMart", "Monkey NFT", "Hacker")
         print("Looks like a hacker is trying to take your new Monkey NFT!",
               "\nFortunately, we can compare the hashes to check the integrity")
         print("Your Hash:\t\t", new_monkey_nft.block_hash, "\nHacker's Hash:\t", fake_nft.block_hash)
