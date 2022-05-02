@@ -132,7 +132,7 @@ if check_option(option):
 
         # fake NFT that the "hacker" tried to steal while you bought it
         fake_nft = BC(Book.block_hash, "CryptoMart", "Monkey NFT", "Hacker")
-        print("Looks like a hacker is trying to take your new Book!",
+        print("Looks like a hacker is trying to take your new Monkey NFT!",
               "\nFortunately, we can compare the hashes to check the integrity")
         print("Your Hash:\t\t", new_monkey_nft.block_hash, "\nHacker's Hash:\t", fake_nft.block_hash)
 
